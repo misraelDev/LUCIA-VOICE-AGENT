@@ -1,0 +1,156 @@
+// // ARCHIVO COMENTADO TEMPORALMENTE - NO NECESARIO POR AHORA
+// /*
+// import { NextRequest, NextResponse } from 'next/server'
+// import { Resend } from 'resend'
+
+// const resend = new Resend(process.env.RESEND_API_KEY)
+
+// export async function POST(request: NextRequest) {
+//   try {
+//     const body = await request.json()
+//     const { nombre, email, telefono, necesidad, mensaje } = body
+
+//     // Validación básica
+//     if (!nombre || !email || !mensaje) {
+//       return NextResponse.json(
+//         { error: 'Faltan campos requeridos' },
+//         { status: 400 }
+//       )
+//     }
+
+//     // Enviar email usando Resend
+//     const { data, error } = await resend.emails.send({
+//       from: 'Lucia Voice Agent <onboarding@resend.dev>',
+//       to: ['mdelrey@sarexlabs.com'],
+//       subject: `Nuevo mensaje de contacto de ${nombre}`,
+//       html: `
+//       <!DOCTYPE html>
+//       <html lang="es">
+//       <head>
+//           <meta charset="UTF-8">
+//           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//           <title>Nuevo mensaje de contacto - Lucia Voice Agent</title>
+//           <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' rel='stylesheet'>
+//       </head>
+//       <body style="background-color: #f8fafc; margin: 0; padding: 20px; font-family: 'Inter', 'Segoe UI', sans-serif; line-height: 1.6;">
+//           <div style="max-width: 560px; margin: 0 auto; background-color: #ffffff; border-radius: 10px; border: 1px solid #d1d5db; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden;">
+              
+//               <!-- Header -->
+//               <div style="background-color: #462BDD; padding: 20px 24px; text-align: center;">
+//                   <h1 style="color: #ffffff; font-size: 24px; font-weight: 700; margin: 0; letter-spacing: -0.025em;">
+//                       Nueva solicitud de contacto
+//                   </h1>
+//               </div>
+
+//               <!-- Content -->
+//               <div style="padding: 32px 24px;">
+                  
+//                   <!-- Greeting -->
+//                   <div style="margin-bottom: 24px;">
+//                       <p style="color: #374151; font-size: 16px; margin: 0 0 8px 0; font-weight: 500;">
+//                           Hola Misrael,
+//                       </p>
+//                       <p style="color: #6b7280; font-size: 14px; margin: 0;">
+//                           Has recibido un nuevo mensaje desde tu sitio web.
+//                       </p>
+//                   </div>
+
+//                   <!-- Contact Info Card -->
+//                   <div style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+//                       <h3 style="color: #111827; font-size: 16px; font-weight: 600; margin: 0 0 16px 0;">
+//                           Información del contacto
+//                       </h3>
+                      
+//                       <div style="space-y: 12px;"> 
+//                           <div style="margin-bottom: 12px;">
+//                               <span style="color: #6b7280; font-size: 13px; font-weight: 500; display: inline-block; width: 70px;">Nombre:</span>
+//                               <span style="color: #111827; font-size: 14px; font-weight: 500;">${nombre}</span>
+//                           </div>
+                          
+//                           <div style="margin-bottom: 12px;">
+//                               <span style="color: #6b7280; font-size: 13px; font-weight: 500; display: inline-block; width: 70px;">Email:</span>
+//                               <a href="mailto:${email}" style="color: #3b82f6; font-size: 14px; text-decoration: none; font-weight: 500;">${email}</a>
+//                           </div>
+                          
+//                           ${telefono ? `
+//                           <div style="margin-bottom: 12px;">
+//                               <span style="color: #6b7280; font-size: 13px; font-weight: 500; display: inline-block; width: 70px;">Teléfono:</span>
+//                               <a href="tel:${telefono}" style="color: #059669; font-size: 14px; text-decoration: none; font-weight: 500;">${telefono}</a>
+//                           </div>
+//                           ` : ''}
+                          
+//                           ${necesidad ? `
+//                           <div style="margin-bottom: 12px;">
+//                               <span style="color: #6b7280; font-size: 13px; font-weight: 500; display: inline-block; width: 70px;">Necesidad:</span>
+//                               <span style="color: #111827; font-size: 14px; font-weight: 500;">${necesidad}</span>
+//                           </div>
+//                           ` : ''}
+//                       </div>
+//                   </div>
+                  
+//                   <!-- Message Card -->
+//                   <div style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
+//                       <h4 style="color: #111827; font-size: 14px; font-weight: 600; margin: 0 0 12px 0;">
+//                           Mensaje
+//                       </h4>
+//                       <div style="color: #374151; font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${mensaje}</div>
+//                   </div>
+                  
+//                   <!-- Action Button -->
+//                   <div style="text-align: center; margin: 32px 0;">
+//                       <a href="mailto:${email}?subject=Re: Contacto desde Lucia Voice Agent&body=Hola ${nombre},%0A%0AGracias por contactarme..." 
+//                          style="background-color: #462BDD; 
+//                                 color: #ffffff; 
+//                                 padding: 12px 24px; 
+//                                 font-size: 14px; 
+//                                 font-weight: 600; 
+//                                 border: none; 
+//                                 border-radius: 6px; 
+//                                 text-decoration: none; 
+//                                 display: inline-block; 
+//                                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//                                 transition: all 0.2s;">
+//                           Responder al contacto
+//                       </a>
+//                   </div>
+
+//               </div>
+
+//               <!-- Footer -->
+//               <div style="background-color: #f9fafb; padding: 20px 24px; border-top: 1px solid #e5e7eb;">
+//                   <p style="color: #6b7280; font-size: 12px; margin: 0 0 8px 0; text-align: center;">
+//                       Este mensaje fue enviado desde el formulario de contacto de Lucia Voice Agent
+//                   </p>
+//                   <p style="color: #9ca3af; font-size: 11px; margin: 0; text-align: center;">
+//                       © 2024 Lucia Voice Agent. Todos los derechos reservados.
+//                   </p>
+//               </div>
+
+//           </div>
+//       </body>
+//       </html>
+//       `,
+//     })
+
+//     if (error) {
+//       console.error('Error enviando email:', error)
+//       return NextResponse.json(
+//         { error: 'Error al enviar el email' },
+//         { status: 500 }
+//       )
+//     }
+
+//     return NextResponse.json(
+//       { message: 'Email enviado correctamente', id: data?.id },
+//       { status: 200 }
+//     )
+
+//   } catch (error) {
+//     console.error('Error en el endpoint de contacto:', error)
+//     return NextResponse.json(
+//       { error: 'Error interno del servidor' },
+//       { status: 500 }
+//     )
+//   }
+// }
+// */

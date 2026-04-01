@@ -1,0 +1,35 @@
+{
+  "id": "inmobiliaria",
+  "name": "Lucía - Asistente Inmobiliaria",
+  "description": "Asistente virtual especializada en servicios inmobiliarios y visitas",
+  "model": "fixie-ai/ultravox",
+  "externalVoice": {
+    "chatterbox": {
+      "modelVariant": "multilingual",
+      "languageId": "es",
+      "referenceAudioPath": "voices/lucia-reference.wav"
+    }
+  },
+"selectedTools": [
+    {
+      "toolId": "83ae50c7-7c02-4c80-a31c-b0c1a78aa2ae"
+    },
+    {
+      "toolId": "56294126-5a7d-4948-b67d-3b7e13d55ea7"
+    }
+  ],
+  "prompt": {
+    "templateFile": "templates/inmobiliaria.md"
+  },
+  "tools": [],
+  "settings": {
+    "maxTokens": 2000,
+    "temperature": 0.7
+  },
+  "vadSettings": {
+    "turnEndpointDelay": "0.1s",
+    "minimumTurnDuration": "0.2s",
+    "minimumInterruptionDuration": "0.05s",
+    "frameActivationThreshold": 0.3
+  }
+}

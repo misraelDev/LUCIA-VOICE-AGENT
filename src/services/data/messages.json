@@ -1,0 +1,96 @@
+{
+  "5491123456789@s.whatsapp.net": [
+    {
+      "key": {
+        "remoteJid": "5491123456789@s.whatsapp.net",
+        "fromMe": false,
+        "id": "msg001"
+      },
+      "message": {
+        "conversation": "Hola, quisiera información sobre sus servicios"
+      },
+      "messageTimestamp": 1705320600,
+      "pushName": "Juan Pérez"
+    },
+    {
+      "key": {
+        "remoteJid": "5491123456789@s.whatsapp.net",
+        "fromMe": true,
+        "id": "msg002"
+      },
+      "message": {
+        "conversation": "¡Hola Juan! Con gusto te ayudo. ¿Qué servicio te interesa?"
+      },
+      "messageTimestamp": 1705320900,
+      "pushName": "Asistente"
+    }
+  ],
+  "5491198765432@s.whatsapp.net": [
+    {
+      "key": {
+        "remoteJid": "5491198765432@s.whatsapp.net",
+        "fromMe": false,
+        "id": "msg003"
+      },
+      "message": {
+        "conversation": "Buenos días, necesito agendar una cita"
+      },
+      "messageTimestamp": 1705234200,
+      "pushName": "María García"
+    },
+    {
+      "key": {
+        "remoteJid": "5491198765432@s.whatsapp.net",
+        "fromMe": true,
+        "id": "msg004"
+      },
+      "message": {
+        "conversation": "Buenos días María. ¿Para qué fecha te gustaría la cita?"
+      },
+      "messageTimestamp": 1705234500,
+      "pushName": "Asistente"
+    }
+  ],
+  "5491155544433@s.whatsapp.net": [
+    {
+      "key": {
+        "remoteJid": "5491155544433@s.whatsapp.net",
+        "fromMe": false,
+        "id": "msg005"
+      },
+      "message": {
+        "conversation": "¿Cuáles son sus horarios de atención?"
+      },
+      "messageTimestamp": 1705147800,
+      "pushName": "Carlos López"
+    }
+  ],
+  "5491177788899@s.whatsapp.net": [
+    {
+      "key": {
+        "remoteJid": "5491177788899@s.whatsapp.net",
+        "fromMe": false,
+        "id": "msg006"
+      },
+      "message": {
+        "conversation": "Gracias por la atención"
+      },
+      "messageTimestamp": 1705061400,
+      "pushName": "Ana Martínez"
+    }
+  ],
+  "5491133322211@s.whatsapp.net": [
+    {
+      "key": {
+        "remoteJid": "5491133322211@s.whatsapp.net",
+        "fromMe": false,
+        "id": "msg007"
+      },
+      "message": {
+        "conversation": "¿Tienen disponibilidad para mañana?"
+      },
+      "messageTimestamp": 1704975000,
+      "pushName": "Roberto Sánchez"
+    }
+  ]
+}
