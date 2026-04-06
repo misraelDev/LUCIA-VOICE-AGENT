@@ -35,11 +35,13 @@ export function NavUser() {
 
   const handleConfirmLogout = async () => {
     setLogoutSubmitting(true)
+    // Cierra el modal primero para evitar que el overlay de Dialog
+    // quede bloqueando interacción durante el cambio de ruta.
+    setLogoutOpen(false)
     try {
       await logout()
     } finally {
       setLogoutSubmitting(false)
-      setLogoutOpen(false)
     }
   }
 
