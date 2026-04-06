@@ -1,5 +1,6 @@
-// Configuración de la API
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'anel.host'
+// Configuración de la API (mismo fallback que `src/config/env.ts`)
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api/v1";
 
 // Tipos para las respuestas de la API (flexible según backend actual)
 export interface AuthResponse {
